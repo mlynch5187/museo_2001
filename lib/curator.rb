@@ -20,15 +20,36 @@ class Curator
 
   def photographs_by_artist
     photos_by_artist = Hash.new
+    photo_array = []
 
     @artists.each do |artist|
       photos_by_artist[artist] = nil
     @photographs.each do |photo|
       if photo.artist_id == artist.id
         photos_by_artist[artist] = photo
+        end
       end
     end
+    photos_by_artist
   end
-  photos_by_artist
+
+  def artists_with_multiple_photographs
+    require "pry"; binding.pry
+    end
+  end
+
+  def photographs_taken_by_artist_from(country)
+    photos_from_country = []
+
+    artist_country = @artists.each do |artist|
+      artist.country
+
+    @photographs.each do |photo|
+      if photo.artist_id == artist.id
+        photos_from_country << photo
+        end
+      end
+    end
+    photos_from_country
   end
 end
