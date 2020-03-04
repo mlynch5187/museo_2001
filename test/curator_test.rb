@@ -87,12 +87,25 @@ class CuratorTest < MiniTest::Test
     @curator.add_photograph(@photo_3)
     @curator.add_photograph(@photo_4)
 
-    expected = {#<Artist:0x00007fabc6a52340...> => [#<Photograph:0x00007fabc6933180...>],
-           #<Artist:0x00007fabc6c20870...> => [#<Photograph:0x00007fabc6c28e58...>],
-           # <Artist:0x00007fabc5ba0c70...> => [#<Photograph:0x00007fabc5bb9ef0...>, #<Photograph:0x00007fabc6b931f0...>]
-         }
+    expected = {@artist_1 => [@photo_1],
+                @artist_2 => [@photo_2],
+                @artist_3 => [@photo_3, @photo_4]}
 
     assert_equal expected, @curator.photographs_by_artist
+  end
+
+  def test_artists_with_multiple_photographs
+    skip
+    @curator.add_artist(@artist_1)
+    @curator.add_artist(@artist_2)
+    @curator.add_artist(@artist_3)
+
+    @curator.add_photograph(@photo_1)
+    @curator.add_photograph(@photo_2)
+    @curator.add_photograph(@photo_3)
+    @curator.add_photograph(@photo_4)
+
+    assert_equal ["Diane Arbus"], @curator.artists_with_multiple_photographs
   end
 end
 
