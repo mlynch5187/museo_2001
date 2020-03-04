@@ -34,7 +34,8 @@ class Curator
   end
 
   def artists_with_multiple_photographs
-    require "pry"; binding.pry
+    artists_mulit = @artists.find_all {|artist| (photographs_by_artist[artist].length > 1)}
+    artists_multi.map { |artist| artist.name}
     end
   end
 
@@ -47,7 +48,6 @@ class Curator
     @photographs.each do |photo|
       if photo.artist_id == artist.id
         photos_from_country << photo
-        end
       end
     end
     photos_from_country
