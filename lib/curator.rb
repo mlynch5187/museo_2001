@@ -17,4 +17,11 @@ class Curator
   def find_artist_by_id(id)
     @artists.find { |artist| artist.id == id}
   end
+
+  def photographs_by_artist
+  
+
+    #find photographs whos artist id matches artists id
+
+  end
 end
